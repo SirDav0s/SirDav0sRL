@@ -239,11 +239,11 @@
             
             <div class="input-group">
                 <label class="label-check"><input type="checkbox" class="chk-marca" checked> Marcas (;):</label>
-                <input type="text" class="in-marca" value=" ">
+                <input type="text" class="in-marca" value="GADNIC">
             </div>
             
             <div class="input-group">
-                <label class="label-check"><input type="checkbox" class="chk-modelo" checked> Modelos (;):</label>
+                <label class="label-check"><input type="checkbox" class="chk-modelo" checked> Modelos (espacio):</label>
                 <input type="text" class="in-modelo" value=" ">
             </div>
 
@@ -287,9 +287,9 @@
                 <label class="check-item"><input type="checkbox" class="c-ocular"> Ocular</label>
             </div>
 
-            <!-- CHECKBOX NUEVO PARA LA IMAGEN INFERIOR -->
+            <!-- CHECKBOX NUEVO PARA LA IMAGEN INFERIOR - AHORA DESACTIVADO -->
             <div class="input-group" style="margin-top: 10px; background: #fff3cd; padding: 10px; border-radius: 4px; border: 1px solid #ffe69c;">
-                <label class="label-check" style="color: #856404;"><input type="checkbox" class="chk-img-inferior" checked> 🛡️ Tira Iconos Inferior (SegIcono.png)</label>
+                <label class="label-check" style="color: #856404;"><input type="checkbox" class="chk-img-inferior"> 🛡️ Tira Iconos Inferior (SegIcono.png)</label>
             </div>
         </div>
     </div>
@@ -361,11 +361,11 @@
             
             <div class="input-group">
                 <label class="label-check"><input type="checkbox" class="chk-marca" checked> Marcas (;):</label>
-                <input type="text" class="in-marca" value=" ">
+                <input type="text" class="in-marca" value="GADNIC">
             </div>
             
             <div class="input-group">
-                <label class="label-check"><input type="checkbox" class="chk-modelo" checked> Modelos (;):</label>
+                <label class="label-check"><input type="checkbox" class="chk-modelo" checked> Modelos (espacio):</label>
                 <input type="text" class="in-modelo" value=" ">
             </div>
 
@@ -409,9 +409,9 @@
                 <label class="check-item"><input type="checkbox" class="c-ocular"> Ocular</label>
             </div>
 
-            <!-- CHECKBOX NUEVO PARA LA IMAGEN INFERIOR -->
+            <!-- CHECKBOX NUEVO PARA LA IMAGEN INFERIOR - DESACTIVADO -->
             <div class="input-group" style="margin-top: 10px; background: #fff3cd; padding: 10px; border-radius: 4px; border: 1px solid #ffe69c;">
-                <label class="label-check" style="color: #856404;"><input type="checkbox" class="chk-img-inferior" checked> 🛡️ Tira Iconos Inferior (SegIcono.png)</label>
+                <label class="label-check" style="color: #856404;"><input type="checkbox" class="chk-img-inferior"> 🛡️ Tira Iconos Inferior (SegIcono.png)</label>
             </div>
         `;
         contenedor.appendChild(div);
@@ -477,7 +477,8 @@
             let marcas = bloque.querySelector('.in-marca').value.split(';').map(m => m.trim().toUpperCase()).filter(m => m !== '');
             if (!mostrarMarca || marcas.length === 0) marcas = ['']; 
 
-            let modelos = bloque.querySelector('.in-modelo').value.split(';').map(m => m.trim().toUpperCase()).filter(m => m !== '');
+            // SEPARAR MODELOS POR ESPACIO USANDO REGEX /\s+/
+            let modelos = bloque.querySelector('.in-modelo').value.split(/\s+/).map(m => m.trim().toUpperCase()).filter(m => m !== '');
             if (!mostrarModelo || modelos.length === 0) modelos = ['']; 
 
             let selectedIcons = [];
